@@ -1,0 +1,1 @@
+# modelmapper-module-vavr

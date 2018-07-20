@@ -1,7 +1,9 @@
 package org.modelmapper.module.vavr;
 
 import io.vavr.collection.Array;
+import io.vavr.collection.HashSet;
 import io.vavr.collection.List;
+import io.vavr.collection.Set;
 import io.vavr.control.Option;
 import lombok.Data;
 
@@ -32,16 +34,36 @@ public class StubFactory {
     }
 
     @Data
-    static class DestArray {
-        Array<Dest> array;
+    static class Dest {
+        Integer x;
     }
 
+
+    @Data
+    static class Source {
+        Integer x;
+    }
+
+
+    // Array ---
     @Data
     static class SourceArray {
         Array<Source> array;
     }
 
+    @Data
+    static class DestArray {
+        Array<Dest> array;
+    }
+
+    @Data
     static class ExtendedDestArray extends DestArray {
+    }
+
+    // List ---
+    @Data
+    static class SourceList {
+        List<Source> list;
     }
 
     @Data
@@ -50,40 +72,50 @@ public class StubFactory {
     }
 
     @Data
-    static class Dest {
-        int x;
-    }
-
-    @Data
-    static class SourceList {
-        List<Source> list;
-    }
-
-    @Data
-    static class Source {
-        int x;
-    }
-
     static class ExtendedDestList extends DestList {
     }
 
+
+    // Set ---
+
+    @Data
+    static class SourceSet {
+       HashSet<Source> set;
+    }
+
+    @Data
+    static class DestSet {
+        HashSet<Dest> set;
+    }
+
+    @Data
+    static class ExtendedDestSet extends DestSet {
+    }
+
+
     static SourceList stubSourceList() {
-        Source source1 = new Source();
-        source1.x = 2;
-        Source source2 = new Source();
-        source2.x = 5;
-        SourceList sourceList = new SourceList();
-        sourceList.list = List.of(source1, source2);
+        final SourceList sourceList = new SourceList();
+        sourceList.list = List.of(stubSource(2), stubSource(5));
         return sourceList;
     }
 
     static SourceArray stubSourceArray() {
-        Source source1 = new Source();
-        source1.x = 2;
-        Source source2 = new Source();
-        source2.x = 5;
-        SourceArray sourceArray = new SourceArray();
-        sourceArray.array = Array.of(source1, source2);
+        final SourceArray sourceArray = new SourceArray();
+        sourceArray.array = Array.of(stubSource(2), stubSource(5));
         return sourceArray;
     }
+
+    static SourceSet stubSourceSet() {
+        final SourceSet sourceList = new SourceSet();
+        sourceList.set = HashSet.of(stubSource(2), stubSource(5));
+        return sourceList;
+    }
+
+
+    static Source stubSource(int number) {
+        final Source source = new Source();
+        source.x = number;
+        return source;
+    }
 }
+

@@ -6,11 +6,8 @@ import org.junit.Test;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static junit.framework.TestCase.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.modelmapper.module.vavr.StubFactory.*;
 
 public class ValueConverterTest {
@@ -25,59 +22,73 @@ public class ValueConverterTest {
     }
 
     @Test
-    public void test() {
+    public void testOption() {
         X x = new X();
         Y y = new Y();
         y.status = Boolean.TRUE;
         x.y = Option.of(y);
         XInfo xinfo = modelMapper.map(x, XInfo.class);
-        assertNotNull(xinfo);
-        assertNotNull(xinfo.y);
-        assertThat(xinfo.y.get().status, is(Boolean.TRUE));
-        assertThat(xinfo.y.get(), instanceOf(YInfo.class));
+        assertThat(xinfo).isNotNull();
+        assertThat(xinfo.y).isNotNull();
+        assertThat(xinfo.y.get().status).isEqualTo(Boolean.TRUE);
+        assertThat(xinfo.y.get()).isInstanceOf(YInfo.class);
     }
 
     @Test
     public void testNormalList() {
-        DestList destList = modelMapper.map(stubSourceList(), DestList.class);
+        final DestList destList = modelMapper.map(stubSourceList(), DestList.class);
         checkListResult(destList);
     }
 
     @Test
     public void testDerivedList() {
-        ExtendedDestList extendedDestList = modelMapper.map(stubSourceList(), ExtendedDestList.class);
-        checkListResult(extendedDestList);
+        final DestList destList = modelMapper.map(stubSourceList(), ExtendedDestList.class);
+        checkListResult(destList);
     }
+
+    private void checkListResult(DestList destList) {
+        assertThat(destList.list.get(1))
+                .isNotNull()
+                .isInstanceOf(Dest.class);
+        assertTrue(destList.list.get(1).x == 5);
+    }
+
 
     @Test
     public void testNormalArray() {
-        DestArray destArray = modelMapper.map(stubSourceArray(), DestArray.class);
+        final DestArray destArray = modelMapper.map(stubSourceArray(), DestArray.class);
         checkArrayResult(destArray);
     }
 
     @Test
     public void testDerivedArray() {
-        ExtendedDestArray extendedDestList = modelMapper.map(stubSourceArray(), ExtendedDestArray.class);
-        checkArrayResult(extendedDestList);
+        ExtendedDestArray extendedDestArray = modelMapper.map(stubSourceArray(), ExtendedDestArray.class);
+        checkArrayResult(extendedDestArray);
     }
 
-    <T extends DestList> void checkListResult(T mappingResult) {
-        assertNotNull(mappingResult.list);
-        assertNotNull(mappingResult.list.get(0));
-        assertNotNull(mappingResult.list.get(1));
-        assertTrue(mappingResult.list.get(0) instanceof Dest);
-        assertTrue(mappingResult.list.get(1) instanceof Dest);
-        assertTrue(mappingResult.list.get(0).x == 2);
-        assertTrue(mappingResult.list.get(1).x == 5);
+    private void checkArrayResult(final DestArray destArray) {
+        assertThat(destArray.array.get(1))
+                .isNotNull()
+                .isInstanceOf(Dest.class);
+        assertTrue(destArray.array.get(1).x == 5);
     }
 
-    <T extends DestArray> void checkArrayResult(T mappingResult) {
-        assertNotNull(mappingResult.array);
-        assertNotNull(mappingResult.array.get(0));
-        assertNotNull(mappingResult.array.get(1));
-        assertTrue(mappingResult.array.get(0) instanceof Dest);
-        assertTrue(mappingResult.array.get(1) instanceof Dest);
-        assertTrue(mappingResult.array.get(0).x == 2);
-        assertTrue(mappingResult.array.get(1).x == 5);
+    @Test
+    public void testNormalSet() {
+        final DestSet destSet = modelMapper.map(stubSourceSet(), DestSet.class);
+        checkSetResult(destSet);
+    }
+
+    @Test
+    public void testDerivedSet() {
+        ExtendedDestSet destSet = modelMapper.map(stubSourceSet(), ExtendedDestSet.class);
+        checkSetResult(destSet);
+    }
+
+    private void checkSetResult(final DestSet destSet) {
+        assertThat(destSet.set.head())
+                .isNotNull()
+                .isInstanceOf(Dest.class);
+        assertTrue(destSet.set.head().x == 5);
     }
 }

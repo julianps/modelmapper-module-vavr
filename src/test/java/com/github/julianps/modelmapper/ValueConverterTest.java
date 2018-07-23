@@ -1,4 +1,4 @@
-package org.modelmapper.module.vavr;
+package com.github.julianps.modelmapper;
 
 import io.vavr.control.Option;
 import org.junit.Before;
@@ -8,7 +8,6 @@ import org.modelmapper.convention.MatchingStrategies;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.modelmapper.module.vavr.StubFactory.*;
 
 public class ValueConverterTest {
 
@@ -23,72 +22,72 @@ public class ValueConverterTest {
 
     @Test
     public void testOption() {
-        X x = new X();
-        Y y = new Y();
+        StubFactory.X x = new StubFactory.X();
+        StubFactory.Y y = new StubFactory.Y();
         y.status = Boolean.TRUE;
         x.y = Option.of(y);
-        XInfo xinfo = modelMapper.map(x, XInfo.class);
+        StubFactory.XInfo xinfo = modelMapper.map(x, StubFactory.XInfo.class);
         assertThat(xinfo).isNotNull();
         assertThat(xinfo.y).isNotNull();
         assertThat(xinfo.y.get().status).isEqualTo(Boolean.TRUE);
-        assertThat(xinfo.y.get()).isInstanceOf(YInfo.class);
+        assertThat(xinfo.y.get()).isInstanceOf(StubFactory.YInfo.class);
     }
 
     @Test
     public void testNormalList() {
-        final DestList destList = modelMapper.map(stubSourceList(), DestList.class);
+        final StubFactory.DestList destList = modelMapper.map(StubFactory.stubSourceList(), StubFactory.DestList.class);
         checkListResult(destList);
     }
 
     @Test
     public void testDerivedList() {
-        final DestList destList = modelMapper.map(stubSourceList(), ExtendedDestList.class);
+        final StubFactory.DestList destList = modelMapper.map(StubFactory.stubSourceList(), StubFactory.ExtendedDestList.class);
         checkListResult(destList);
     }
 
-    private void checkListResult(DestList destList) {
+    private void checkListResult(StubFactory.DestList destList) {
         assertThat(destList.list.get(1))
                 .isNotNull()
-                .isInstanceOf(Dest.class);
+                .isInstanceOf(StubFactory.Dest.class);
         assertTrue(destList.list.get(1).x == 5);
     }
 
 
     @Test
     public void testNormalArray() {
-        final DestArray destArray = modelMapper.map(stubSourceArray(), DestArray.class);
+        final StubFactory.DestArray destArray = modelMapper.map(StubFactory.stubSourceArray(), StubFactory.DestArray.class);
         checkArrayResult(destArray);
     }
 
     @Test
     public void testDerivedArray() {
-        ExtendedDestArray extendedDestArray = modelMapper.map(stubSourceArray(), ExtendedDestArray.class);
+        StubFactory.ExtendedDestArray extendedDestArray = modelMapper.map(StubFactory.stubSourceArray(), StubFactory.ExtendedDestArray.class);
         checkArrayResult(extendedDestArray);
     }
 
-    private void checkArrayResult(final DestArray destArray) {
+    private void checkArrayResult(final StubFactory.DestArray destArray) {
         assertThat(destArray.array.get(1))
                 .isNotNull()
-                .isInstanceOf(Dest.class);
+                .isInstanceOf(StubFactory.Dest.class);
         assertTrue(destArray.array.get(1).x == 5);
     }
 
     @Test
     public void testNormalSet() {
-        final DestSet destSet = modelMapper.map(stubSourceSet(), DestSet.class);
+        final StubFactory.DestSet destSet = modelMapper.map(StubFactory.stubSourceSet(), StubFactory.DestSet.class);
         checkSetResult(destSet);
     }
 
     @Test
     public void testDerivedSet() {
-        ExtendedDestSet destSet = modelMapper.map(stubSourceSet(), ExtendedDestSet.class);
+        StubFactory.ExtendedDestSet destSet = modelMapper.map(StubFactory.stubSourceSet(), StubFactory.ExtendedDestSet.class);
         checkSetResult(destSet);
     }
 
-    private void checkSetResult(final DestSet destSet) {
+    private void checkSetResult(final StubFactory.DestSet destSet) {
         assertThat(destSet.set.head())
                 .isNotNull()
-                .isInstanceOf(Dest.class);
+                .isInstanceOf(StubFactory.Dest.class);
         assertTrue(destSet.set.head().x == 5);
     }
 }

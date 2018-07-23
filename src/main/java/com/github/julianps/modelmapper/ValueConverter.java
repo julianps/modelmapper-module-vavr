@@ -1,4 +1,4 @@
-package org.modelmapper.module.vavr;
+package com.github.julianps.modelmapper;
 
 import io.vavr.Value;
 import org.modelmapper.internal.typetools.TypeResolver;

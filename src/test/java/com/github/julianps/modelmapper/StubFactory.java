@@ -1,4 +1,4 @@
-package org.modelmapper.module.vavr;
+package com.github.julianps.modelmapper;
 
 import io.vavr.collection.Array;
 import io.vavr.collection.HashSet;
@@ -6,6 +6,7 @@ import io.vavr.collection.List;
 import io.vavr.collection.Set;
 import io.vavr.control.Option;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 public class StubFactory {
 
@@ -57,6 +58,7 @@ public class StubFactory {
     }
 
     @Data
+    @EqualsAndHashCode(callSuper = true)
     static class ExtendedDestArray extends DestArray {
     }
 
@@ -72,6 +74,7 @@ public class StubFactory {
     }
 
     @Data
+    @EqualsAndHashCode(callSuper = true)
     static class ExtendedDestList extends DestList {
     }
 
@@ -89,6 +92,7 @@ public class StubFactory {
     }
 
     @Data
+    @EqualsAndHashCode(callSuper = true)
     static class ExtendedDestSet extends DestSet {
     }
 

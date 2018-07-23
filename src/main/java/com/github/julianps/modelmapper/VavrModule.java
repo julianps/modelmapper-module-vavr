@@ -1,4 +1,4 @@
-package org.modelmapper.module.vavr;
+package com.github.julianps.modelmapper;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.Module;
@@ -27,7 +27,7 @@ import org.modelmapper.Module;
  */
 public class VavrModule implements Module {
 
-	private final int INDEX_ZERO = 0;
+	public static final int INDEX_ZERO = 0;
 
 	@Override
 	public void setupModule(ModelMapper modelMapper) {

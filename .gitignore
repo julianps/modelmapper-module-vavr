@@ -22,7 +22,6 @@ release.properties
 .idea
 
 # Maven
-target
 .classpath
 .project
 .settings/

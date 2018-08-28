@@ -12,6 +12,7 @@ deploy:
     - modelmapper-module-vavr/target/modelmapper-vavr-module-$project_version.jar
   on:
     repo: julianps/modelmapper-module-vavr
+    tags: true
   skip_cleanup: true
   name: $project_version
 

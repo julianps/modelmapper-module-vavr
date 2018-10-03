@@ -33,7 +33,7 @@
 	</parent>
 
 	<scm>
-		<connection>scm:git:git://github.com/julianps/modelmapper-module-vavr.git</connection>
+		<connection>scm:git@github.com/julianps/modelmapper-module-vavr.git</connection>
 		<developerConnection>scm:git:git@github.com:julianps/julianps.git</developerConnection>
 		<url>https://github.com/julianps/modelmapper-module-vavr</url>
 		<tag>HEAD</tag>
@@ -110,7 +110,7 @@
 						<artifactId>maven-release-plugin</artifactId>
 						<version>2.3.2</version>
 						<configuration>
-								<tagBase>scm:git:git://github.com/julianps/modelmapper-module-vavr.git</tagBase>
+								<tagBase>scm:git:git@github.com/julianps/modelmapper-module-vavr.git</tagBase>
 						</configuration>
 					</plugin>
 					<plugin>

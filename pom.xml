@@ -4,7 +4,7 @@
 
 	<groupId>com.github.julianps.modelmapper</groupId>
 	<artifactId>modelmapper-vavr-module</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -33,10 +33,8 @@
 	</parent>
 
 	<scm>
-		<connection>scm:git@github.com/julianps/modelmapper-module-vavr.git</connection>
+		<connection>scm:ssh://git@github.com/julianps/modelmapper-module-vavr.git</connection>
 		<developerConnection>scm:git:git@github.com:julianps/julianps.git</developerConnection>
-		<url>https://github.com/julianps/modelmapper-module-vavr</url>
-		<tag>HEAD</tag>
 	</scm>
 
 	<distributionManagement>

@@ -33,8 +33,9 @@
 	</parent>
 
 	<scm>
-		<connection>scm:ssh://git@github.com/julianps/modelmapper-module-vavr.git</connection>
+		<connection>scm:git:git://git@github.com/julianps/modelmapper-module-vavr.git</connection>
 		<developerConnection>scm:git:git@github.com:julianps/julianps.git</developerConnection>
+		<url>https://github.com/julianps/modelmapper-module-vavr</url>
 	</scm>
 
 	<distributionManagement>
@@ -109,7 +110,6 @@
 						<version>2.3.2</version>
 						<configuration>
 								<tagBase>scm:git:git@github.com/julianps/modelmapper-module-vavr.git</tagBase>
-								<pushChanges>false</pushChanges>
 						</configuration>
 					</plugin>
 					<plugin>

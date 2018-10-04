@@ -4,7 +4,7 @@
 
 	<groupId>com.github.julianps.modelmapper</groupId>
 	<artifactId>modelmapper-vavr-module</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<packaging>jar</packaging>
 
 	<properties>

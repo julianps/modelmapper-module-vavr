@@ -33,7 +33,7 @@
 	</parent>
 
 	<scm>
-		<connection>scm:git:git://git@github.com/julianps/modelmapper-module-vavr.git</connection>
+		<connection>scm:git:git://github.com/julianps/modelmapper-module-vavr.git</connection>
 		<developerConnection>scm:git:git@github.com:julianps/julianps.git</developerConnection>
 		<url>https://github.com/julianps/modelmapper-module-vavr</url>
 	</scm>

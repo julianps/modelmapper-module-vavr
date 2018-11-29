@@ -36,8 +36,8 @@
 		<connection>scm:git:git://github.com/julianps/modelmapper-module-vavr.git</connection>
 		<developerConnection>scm:git:git@github.com:julianps/julianps.git</developerConnection>
 		<url>https://github.com/julianps/modelmapper-module-vavr</url>
-	  <tag>modelmapper-vavr-module-1.0.2</tag>
-  </scm>
+		<tag>modelmapper-vavr-module-1.0.2</tag>
+	</scm>
 
 	<distributionManagement>
 		<snapshotRepository>

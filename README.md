@@ -1,6 +1,8 @@
 # modelmapper-module-vavr
 [![License](http://img.shields.io/:license-apache-brightgreen.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![Build Status](https://travis-ci.org/julianps/modelmapper-module-vavr.svg)](https://travis-ci.org/julianps/modelmapper-module-vavr)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.julianps.modelmapper/modelmapper-vavr-module/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.julianps.modelmapper/modelmapper-vavr-module)
+
 
 This is a module for [modelmapper](https://github.com/modelmapper/modelmapper) to support [vavr.io](https://github.com/vavr-io/vavr) features.
 Modelmapper is great for converting objects but cannot handle vavr.io types ootb.
